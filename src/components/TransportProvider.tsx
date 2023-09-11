@@ -1,4 +1,4 @@
-import * as React from "react"
+"use client"
 import { WalletAPIProvider } from "@ledgerhq/wallet-api-client-react"
 import { Transport, WindowMessageTransport } from "@ledgerhq/wallet-api-client"
 
