@@ -1,7 +1,7 @@
 {
   "id": "ledger-cex-deposit",
   "name": "Ledger Exchange Connect",
-  "url": "https://localhost:3001/",
+  "url": "https://localhost:3000/",
   "params": {},
   "homepageUrl": "https://ledger.com/",
   "icon": "https://refer-a-friend-frontend-stg.aws.stg.ldg-tech.com/referral-ll/assets/images/referral.png",
