@@ -9,7 +9,8 @@
     "lint": "next lint",
     "format": "$(yarn bin prettier) --write .",
     "typecheck": "tsc --noEmit",
-    "test": "jest --watch"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@ledgerhq/react-ui": "^0.14.9",
