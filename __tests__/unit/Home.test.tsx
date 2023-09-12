@@ -3,7 +3,7 @@
  */
 
 import Home from "@/src/app/page"
-import { render, screen } from "../tools/test.tools"
+import { render, screen } from "@/tools/test.tools"
 
 describe("Home", () => {
   it("renders a heading", () => {
