@@ -1,6 +1,6 @@
-"use client"
-import { WalletAPIProvider } from "@ledgerhq/wallet-api-client-react"
-import { Transport, WindowMessageTransport } from "@ledgerhq/wallet-api-client"
+"use client";
+import { WalletAPIProvider } from "@ledgerhq/wallet-api-client-react";
+import { Transport, WindowMessageTransport } from "@ledgerhq/wallet-api-client";
 
 function TransportProvider({ children }: { children: React.ReactElement }) {
   function getWalletAPITransport(): Transport {
@@ -8,17 +8,17 @@ function TransportProvider({ children }: { children: React.ReactElement }) {
       return {
         onMessage: undefined,
         send: () => {},
-      }
+      };
     }
 
-    const transport = new WindowMessageTransport()
-    transport.connect()
-    return transport
+    const transport = new WindowMessageTransport();
+    transport.connect();
+    return transport;
   }
 
-  const transport = getWalletAPITransport()
+  const transport = getWalletAPITransport();
 
-  return <WalletAPIProvider transport={transport}>{children}</WalletAPIProvider>
+  return <WalletAPIProvider transport={transport}>{children}</WalletAPIProvider>;
 }
 
-export default TransportProvider
+export default TransportProvider;
