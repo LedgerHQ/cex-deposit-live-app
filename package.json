@@ -10,7 +10,8 @@
     "format": "$(yarn bin prettier) --write .",
     "typecheck": "tsc --noEmit",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@ledgerhq/react-ui": "^0.14.9",
