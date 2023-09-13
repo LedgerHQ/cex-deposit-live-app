@@ -2,7 +2,7 @@
 import "@testing-library/jest-dom";
 
 import { ArrayBuffer, TextDecoder, TextEncoder, Uint8Array } from "util";
-import { server } from "./mocks/server.js";
+import { server } from "@/tools/mocks/server";
 
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
