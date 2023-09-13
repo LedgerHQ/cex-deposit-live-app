@@ -37,3 +37,10 @@ describe("Your test suits", () => {
  })
 })
 ```
+
+## MSW
+
+[Mock Service Worker](https://mswjs.io/docs/) is an API mocking library that uses Service Worker API to intercept actual requests.
+
+`handlers.js` contains REST API requests you want to mock
+`server.js` configures a request mocking server with the given request handlers.
