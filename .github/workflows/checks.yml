@@ -28,3 +28,4 @@ jobs:
 
             - name: Run typescript
               run: yarn typecheck
+              
