@@ -21,6 +21,7 @@
     "paths": {
       "@/src/*": ["./src/*"],
       "@/tools/*": ["./tools/*"],
+      "@/hooks/*": ["./src/hooks/*"],
       "@/TestTools": ["./tools/test.tools.tsx"]
     }
   },
@@ -30,7 +31,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "jest.setup.js",
-    "jest.config.js"
+    "jest.config.js",
+    "tools/setEnvVars.js"
   ],
   "exclude": ["node_modules"]
 }

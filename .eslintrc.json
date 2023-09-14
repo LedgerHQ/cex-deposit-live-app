@@ -19,7 +19,8 @@
     "@typescript-eslint/no-explicit-any": "error",
     "prefer-const": "error",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "no-duplicate-imports": ["error", { "includeExports": true }]
   },
   "overrides": [
     // Only uses Testing Library lint rules in test files
