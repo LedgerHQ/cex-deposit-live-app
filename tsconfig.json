@@ -20,7 +20,8 @@
     ],
     "paths": {
       "@/src/*": ["./src/*"],
-      "@/testTools/*": ["./tools/*"]
+      "@/tools/*": ["./tools/*"],
+      "@/TestTools": ["./tools/test.tools.tsx"]
     }
   },
   "include": [
