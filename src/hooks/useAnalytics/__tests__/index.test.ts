@@ -9,44 +9,9 @@ import {
   clearAnalytics,
 } from "@/hooks/useAnalytics";
 
-import { useUserId, useWalletInfo } from "@ledgerhq/wallet-api-client-react";
 import { AnalyticsBrowser } from "@segment/analytics-next";
-
-const TEST_USER_ID = "TEST_USER_ID";
-const mockUseWalletInfoData = {
-  walletInfo: {
-    wallet: {
-      name: "ledger-live",
-      version: "",
-    },
-    tracking: true,
-  },
-  updatedAt: new Date(),
-  error: null,
-  loading: false,
-  updateData: jest.fn(),
-};
-
-const mockUseUserIdData = {
-  userId: TEST_USER_ID,
-  updatedAt: new Date(),
-  error: null,
-  loading: false,
-  updateData: jest.fn(),
-};
-
-jest.mock("@ledgerhq/wallet-api-client");
-jest.mock("@ledgerhq/wallet-api-client-react");
-
-jest.mock("@ledgerhq/wallet-api-client", () => {
-  return {
-    WindowMessageTransport: jest.fn(),
-    WalletAPIClient: jest.fn(),
-  };
-});
-
-const mockUseUserId = useUserId as jest.MockedFunction<typeof useUserId>;
-const mockUseWalletInfo = useWalletInfo as jest.MockedFunction<typeof useWalletInfo>;
+import { mockUseWalletInfo, mockUseWalletInfoData } from "@/tools/mocks/walletInfo.mock";
+import { TEST_USER_ID } from "@/tools/mocks/userId.mock";
 
 describe("useAnalytics", () => {
   const mockTrack = jest.fn();
@@ -61,8 +26,6 @@ describe("useAnalytics", () => {
 
   beforeEach(() => {
     clearAnalytics();
-    mockUseWalletInfo.mockReturnValue(mockUseWalletInfoData);
-    mockUseUserId.mockReturnValue(mockUseUserIdData);
     jest.spyOn(AnalyticsBrowser, "load").mockImplementation(mockAnalyticsLoad);
   });
 

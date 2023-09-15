@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo } from "react";
-import * as Sentry from "@sentry/browser";
+import * as Sentry from "@sentry/nextjs";
 import { AnalyticsBrowser } from "@segment/analytics-next";
 import { useUserId, useWalletInfo } from "@ledgerhq/wallet-api-client-react";
 
