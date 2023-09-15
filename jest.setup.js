@@ -4,10 +4,28 @@ import "@testing-library/jest-dom";
 import { ArrayBuffer, TextDecoder, TextEncoder, Uint8Array } from "util";
 import { server } from "@/tools/mocks/server";
 
+import { mockUseUserId, mockUseUserIdData } from "@/tools/mocks/userId.mock";
+import { mockUseWalletInfo, mockUseWalletInfoData } from "@/tools/mocks/walletInfo.mock";
+
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
 global.ArrayBuffer = ArrayBuffer;
 global.Uint8Array = Uint8Array;
+
+jest.mock("@ledgerhq/wallet-api-client");
+jest.mock("@ledgerhq/wallet-api-client-react");
+
+jest.mock("@ledgerhq/wallet-api-client", () => {
+  return {
+    WindowMessageTransport: jest.fn(),
+    WalletAPIClient: jest.fn(),
+  };
+});
+
+beforeEach(() => {
+  mockUseWalletInfo.mockReturnValue(mockUseWalletInfoData);
+  mockUseUserId.mockReturnValue(mockUseUserIdData);
+});
 
 // MSW integration
 
