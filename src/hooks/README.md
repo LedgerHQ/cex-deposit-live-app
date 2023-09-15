@@ -10,3 +10,12 @@ useYourHook
 ```
 
 The hook must be tested
+
+## useAnalytics
+
+## useError
+
+```ts
+const { throwError } = useError();
+throwError(new Error("MESSAGE"));
+```

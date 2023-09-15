@@ -69,7 +69,7 @@ export function useAnalytics(): {
   }, [userId, extraProperties]);
 
   useEffect(() => {
-    async function startAnalytics() {
+    function startAnalytics() {
       const setupAnalytics = !loadingId && !loadingInfo && walletInfo && userId;
 
       if (setupAnalytics && !analytics) {
@@ -93,7 +93,7 @@ export function useAnalytics(): {
 
       if (errorWalletInfo || errorUserId) {
         Sentry.captureException(
-          new Error("Analytics couldn't start because of errorWalletInfo orerrorUserId "),
+          new Error("Analytics couldn't start because of errorWalletInfo or errorUserId "),
         );
       }
     }
