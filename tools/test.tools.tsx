@@ -2,12 +2,18 @@ import React, { ReactElement } from "react";
 import { render, RenderOptions } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { StyleProvider } from "@/styles/provider";
+import { configureStore } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
+import { appReducer } from "@/redux/store";
 
 type PropsTheme = {
   children: React.ReactNode;
   theme?: "dark" | "light";
 };
 
+const mockedStore = configureStore({
+  reducer: appReducer,
+});
 /**
  *
  * @param children Your component you want to render
@@ -16,9 +22,11 @@ type PropsTheme = {
  */
 const AllProviders = ({ children, theme = "dark" }: PropsTheme) => {
   return (
-    <StyleProvider selectedPalette={theme} fontsPath="/fonts">
-      {children}
-    </StyleProvider>
+    <Provider store={mockedStore}>
+      <StyleProvider selectedPalette={theme} fontsPath="/fonts">
+        {children}
+      </StyleProvider>
+    </Provider>
   );
 };
 
