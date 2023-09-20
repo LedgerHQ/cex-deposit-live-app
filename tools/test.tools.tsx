@@ -1,37 +1,18 @@
-import React, { ReactElement } from "react";
+import React, { PropsWithChildren } from "react";
 import { render, RenderOptions } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { StyleProvider } from "@/styles/provider";
-import { configureStore } from "@reduxjs/toolkit";
+import { PreloadedState } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import { appReducer } from "@/redux/store";
+import { RootState, setupStore } from "@/redux/store";
+import { ToolkitStore } from "@reduxjs/toolkit/dist/configureStore";
 
-type PropsTheme = {
-  children: React.ReactNode;
-  theme?: "dark" | "light";
-};
-
-const mockedStore = configureStore({
-  reducer: appReducer,
-});
-/**
- *
- * @param children Your component you want to render
- * @param theme Theme of your app, by default it's dark
- * @returns Your component wrapped with LedgerLive's StyleProvider
- */
-const AllProviders = ({ children, theme = "dark" }: PropsTheme) => {
-  return (
-    <Provider store={mockedStore}>
-      <StyleProvider selectedPalette={theme} fontsPath="/fonts">
-        {children}
-      </StyleProvider>
-    </Provider>
-  );
-};
-
-const customRender = (ui: ReactElement, options?: Omit<RenderOptions, "wrapper">) =>
-  render(ui, { wrapper: AllProviders, ...options });
+// This type interface extends the default options for render from RTL, as well
+// as allows the user to specify other things such as initialState, store.
+interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
+  preloadedState?: PreloadedState<RootState>;
+  store?: ToolkitStore;
+}
 
 /**
  *
@@ -39,10 +20,36 @@ const customRender = (ui: ReactElement, options?: Omit<RenderOptions, "wrapper">
  * @param options
  * @returns your component wrapped with theme and userEvent setuped
  */
-const setupUserEventWithRender = (ui: ReactElement, options?: Omit<RenderOptions, "wrapper">) => ({
-  user: userEvent.setup(),
-  ...customRender(ui, options),
-});
+
+export function renderWithProviders(
+  ui: React.ReactElement,
+  {
+    preloadedState = {},
+    // Automatically create a store instance if no store was passed in
+    store = setupStore(preloadedState),
+    ...renderOptions
+  }: ExtendedRenderOptions = {},
+) {
+  function Wrapper({
+    children,
+    theme,
+  }: PropsWithChildren<{
+    theme?: "dark" | "light";
+  }>): JSX.Element {
+    return (
+      <Provider store={store}>
+        <StyleProvider selectedPalette={theme} fontsPath="/fonts">
+          {children}
+        </StyleProvider>
+      </Provider>
+    );
+  }
+  return {
+    user: userEvent.setup(),
+    store,
+    ...render(ui, { wrapper: Wrapper, ...renderOptions }),
+  };
+}
 
 export * from "@testing-library/react";
-export { setupUserEventWithRender as render };
+export { renderWithProviders as render };
