@@ -3,7 +3,7 @@
  */
 
 import { render, screen } from "@/TestTools";
-import Error from "@/src/app/error";
+import Error from "@/app/error";
 import { error } from "@/tools/mocks/error.mock";
 
 describe("Error Component", () => {
