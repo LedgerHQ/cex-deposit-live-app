@@ -1,6 +1,8 @@
+"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
 import ThemeSelector from "@/components/ThemeSelector";
+import { Storetester } from "@/components/StoreTester-to-remove";
 
 export default function Home() {
   return (
@@ -30,6 +32,7 @@ export default function Home() {
       </div>
 
       <ThemeSelector />
+      <Storetester />
 
       <div className={styles.center}>
         <Image
