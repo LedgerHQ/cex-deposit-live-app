@@ -1,34 +1,107 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CEX to Deposit Live App
+
+This is a web application that uses [Next.js](https://nextjs.org/)
+and is intended to be integrated within ledger products, enabling users to seamlessly connect to dapps supporting the walletconnect wallet adapter.
+
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=ledger_cex-deposit-live-app)
+
+## Hosting
+
+This live app is currently hosted at "TO BE DEFINED"
 
 ## Getting Started
 
-First, run the development server:
+### Environment
+
+First, create an `.env.local` file locally at the root of the repository. You can duplicate `.env.example` and name the new copy `.env.local`.
+
+### Proto
+
+**⚠️ Important**: In order to use install the right version of the tools you will need to install the [`proto`](https://moonrepo.dev/proto) toolchain manager.
+Please follow the instructions on the [**proto**](https://moonrepo.dev/docs/proto/install) website to install it.
+
+Once you have installed `proto`, please run the following command:
 
 ```bash
-npm run dev
-# or
+# Will download and install the supported versions of nodejs, npm and pnpm.
+# Run it from the root or a subfolder of the repository.
+proto use
+```
+
+First, you should install dependencies
+
+```bash
+yarn
+```
+
+Secondly, run the development server:
+
+```bash
 yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Manifest
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+All Live apps are defined with a manifest. Here is one that can be used for local development:
 
-## Learn More
+```json
+{
+ "id": "ledger-cex-deposit",
+ "name": "Ledger Exchange Connect",
+ "url": "http://localhost:3000/",
+ "params": {},
+ "homepageUrl": "https://ledger.com/",
+ "icon": "https://refer-a-friend-frontend-stg.aws.stg.ldg-tech.com/referral-ll/assets/images/referral.png",
+ "platform": "all",
+ "apiVersion": "^2.0.0",
+ "manifestVersion": "1",
+ "branch": "stable",
+ "categories": ["bridge", "defi"],
+ "currencies": ["*"],
+ "content": {
+  "shortDescription": {
+   "en": "This is a short description"
+  },
+  "description": {
+   "en": "This is a long description"
+  }
+ },
+ "permissions": [
+  "account.list",
+  "account.request",
+  "message.sign",
+  "transaction.sign",
+  "transaction.signAndBroadcast",
+  "wallet.userId",
+  "wallet.info"
+ ],
+ "domains": ["http://*", "https://*"]
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Testing Strategy & Prerequisites
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+We use [`Jest`](https://jestjs.io/) and
+[`React Testing Library`](https://testing-library.com/docs/react-testing-library/intro/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### Launch tests
 
-## Deploy on Vercel
+The live-app contains unit tests and integration tests.
+To run tests :
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+yarn test:unit
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To run tests and coverage :
+
+```bash
+yarn test:coverage
+```
+
+#### Naming convention
+
+To create a simple unit test, use the `*.test.ts(x)` pattern.
+To create an integration test, use the `*.integration.test.ts` pattern.
