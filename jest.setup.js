@@ -2,10 +2,10 @@
 import "@testing-library/jest-dom";
 
 import { ArrayBuffer, TextDecoder, TextEncoder, Uint8Array } from "util";
-import { server } from "@/tools/mocks/server";
 
-import { mockUseUserId, mockUseUserIdData } from "@/tools/mocks/userId.mock";
-import { mockUseWalletInfo, mockUseWalletInfoData } from "@/tools/mocks/walletInfo.mock";
+import { server } from "@/tools-test/mocks/server";
+import { mockUseUserId, mockUseUserIdData } from "@/tools-test/mocks/userId.mock";
+import { mockUseWalletInfo, mockUseWalletInfoData } from "@/tools-test/mocks/walletInfo.mock";
 
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;

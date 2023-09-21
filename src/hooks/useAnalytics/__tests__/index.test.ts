@@ -10,8 +10,8 @@ import {
 } from "@/hooks/useAnalytics";
 
 import { AnalyticsBrowser } from "@segment/analytics-next";
-import { mockUseWalletInfo, mockUseWalletInfoData } from "@/tools/mocks/walletInfo.mock";
-import { TEST_USER_ID } from "@/tools/mocks/userId.mock";
+import { mockUseWalletInfo, mockUseWalletInfoData } from "@/tools-test/mocks/walletInfo.mock";
+import { TEST_USER_ID } from "@/tools-test/mocks/userId.mock";
 
 describe("useAnalytics", () => {
   const mockTrack = jest.fn();

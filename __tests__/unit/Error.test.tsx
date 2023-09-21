@@ -2,9 +2,9 @@
  * @jest-environment jsdom
  */
 
-import { render, screen } from "@/TestTools";
 import Error from "@/app/error";
-import { error } from "@/tools/mocks/error.mock";
+import { render, screen } from "@/tools-test/render";
+import { error } from "@/tools-test/mocks/error.mock";
 
 describe("Error Component", () => {
   const mockReset = jest.fn();

@@ -25,9 +25,8 @@
       "@/middleware/*": ["./src/middleware/*"],
       "@/styles/*": ["./src/styles/*"],
       "@/redux/*": ["./src/redux/*"],
-      "@/tools/*": ["./tools/*"],
-      "@/hooks/*": ["./src/hooks/*"],
-      "@/TestTools": ["./tools/test.tools.tsx"]
+      "@/tools-test/*": ["./tools/test/*"],
+      "@/hooks/*": ["./src/hooks/*"]
     }
   },
   "include": [

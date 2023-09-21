@@ -3,7 +3,7 @@
  */
 
 import Home from "@/app/[locale]/page";
-import { render, screen } from "@/TestTools";
+import { render, screen } from "@/tools-test/render";
 
 describe("Home", () => {
   it("renders a heading", () => {

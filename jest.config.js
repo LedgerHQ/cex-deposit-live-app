@@ -11,7 +11,7 @@ const createJestConfig = nextJest({
 // Add any custom config to be passed to Jest
 /** @type {import('jest').Config} */
 const customJestConfig = {
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.js", "<rootDir>/tools/setEnvVars.js"],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.js", "<rootDir>/tools/test/setEnvVars.js"],
   testEnvironment: "jest-environment-jsdom",
   collectCoverageFrom: ["src/**/*.{ts,tsx}", "!src/layout.tsx"],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
