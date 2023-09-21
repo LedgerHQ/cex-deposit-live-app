@@ -1,7 +1,8 @@
 import { chain } from "@/middleware/utils";
-import { withI18n } from "@/middleware/index";
+import { withI18n } from "@/middleware/withI18n";
+import { withMaintenance } from "@/middleware/withMaintenance";
 
-const middlewares = [withI18n];
+const middlewares = [withI18n, withMaintenance];
 
 export default chain(middlewares);
 
