@@ -1,9 +1,9 @@
-import { NextRequest } from "next/server";
-import { I18nMiddleware } from "@/i18n/middleware";
+import { chain } from "@/middleware/utils";
+import { withI18n } from "@/middleware/index";
 
-export function middleware(request: NextRequest) {
-  return I18nMiddleware(request);
-}
+const middlewares = [withI18n];
+
+export default chain(middlewares);
 
 export const config = {
   matcher: ["/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)"],
