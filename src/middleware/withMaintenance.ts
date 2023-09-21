@@ -8,7 +8,7 @@ export const withMaintenance: MiddlewareFactory = (next: NextMiddleware) => {
 
     const appConfig = await getAppConfig();
 
-    if (appConfig && !appConfig.enabled) {
+    if (!appConfig || !appConfig.enabled) {
       request.nextUrl.pathname = `/maintenance`;
 
       return NextResponse.rewrite(request.nextUrl);

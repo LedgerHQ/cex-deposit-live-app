@@ -1,4 +1,8 @@
 {
   "hello": "Hello",
-  "welcome": "Welcome"
+  "welcome": "Welcome",
+  "applicationDisabled": {
+    "title": "We are currently under maintenance.",
+    "desc": "We are actively working to restore the app as soon as possible. Thank you for your understanding."
+  }
 }
