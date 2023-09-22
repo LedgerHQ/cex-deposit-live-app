@@ -10,6 +10,11 @@ const nextConfig = {
 
 module.exports = nextConfig;
 
+/**
+ * @dev temporary removing some logs in server.
+ */
+require("./tools/removeLogs");
+
 // Injected content via Sentry wizard below
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
