@@ -10,7 +10,7 @@ import { mockUseWalletInfo, mockUseWalletInfoData } from "@/tools-test/mocks/wal
 /**
  * @dev temporary removing some logs.
  */
-require("./tools/removeLogs");
+import("./tools/removeLogs");
 
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
