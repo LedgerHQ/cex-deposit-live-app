@@ -24,6 +24,7 @@
       "@/components/*": ["./src/components/*"],
       "@/styles/*": ["./src/styles/*"],
       "@/redux/*": ["./src/redux/*"],
+      "@/tools/*": ["./tools/*"],
       "@/tools-test/*": ["./tools/test/*"],
       "@/hooks/*": ["./src/hooks/*"]
     }

@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * @dev temporary removing some logs in client.
+ */
+require("@/tools/removeLogs");
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import ThemeSelector from "@/components/ThemeSelector";

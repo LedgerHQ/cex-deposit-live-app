@@ -7,6 +7,11 @@ import { server } from "@/tools-test/mocks/server";
 import { mockUseUserId, mockUseUserIdData } from "@/tools-test/mocks/userId.mock";
 import { mockUseWalletInfo, mockUseWalletInfoData } from "@/tools-test/mocks/walletInfo.mock";
 
+/**
+ * @dev temporary removing some logs.
+ */
+require("./tools/removeLogs");
+
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
 global.ArrayBuffer = ArrayBuffer;
