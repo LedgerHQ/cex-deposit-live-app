@@ -28,3 +28,5 @@ console.warn = (...args) => {
   }
   originalWarn.call(console, ...args);
 };
+
+module.exports = {};
